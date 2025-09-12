@@ -1852,7 +1852,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 $this->tabs_gui->addTab(
                     "news_timeline",
                     $this->lng->txt("cont_news_timeline_tab"),
-                    $this->ctrl->getLinkTargetByClass("ilnewstimelinegui", "show")
+                    $this->ctrl->getLinkTargetByClass(ilNewsTimelineGUI::class, "show")
                 );
                 if ($this->object->isNewsTimelineLandingPageEffective()) {
                     $this->addContentTab();
@@ -2382,7 +2382,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 $this->ctrl->forwardCommand($news_set_gui);
                 break;
 
-            case "ilnewstimelinegui":
+            case strtolower(ilNewsTimelineGUI::class):
                 if (!$this->__checkStartObjects()) {    // see #37236
                     $this->ctrl->redirectByClass(self::class, "view");
                 }
@@ -2479,7 +2479,7 @@ class ilObjCourseGUI extends ilContainerGUI
                 }
                 // if news timeline is landing page, redirect if necessary
                 if ($cmd == "" && $this->object->isNewsTimelineLandingPageEffective()) {
-                    $this->ctrl->redirectByClass("ilnewstimelinegui");
+                    $this->ctrl->redirectByClass(ilNewsTimelineGUI::class);
                 }
 
                 if (!$cmd) {
