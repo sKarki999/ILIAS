@@ -2885,7 +2885,7 @@ certificate#:#certificate_short_name_description#:#Please enter a short title fo
 certificate#:#certificate_text#:#Certificate Text
 certificate#:#certificate_text_info#:#Please enter the text you want to have displayed on the certificate. If the WYSIWYG editor is disabled in the ILIAS administration, you can still use valid XHTML to format the text.
 certificate#:#certificate_unit_description#:#Enter units of measurement as: VALUE[cm|mm|in|pt|pc|px|em], e.g. 10mm or 3in
-certificate#:#certificate_usage#:#Please note that certificates can only be used and created if you are using the ILIAS Java Server. The Java Server can be configured in Administration » System Settings and Maintenance » General Settings » Server » (sub-tab) Java-Server.
+certificate#:#certificate_usage#:#Please note that the use and creation of certificates is only possible if you use the ILIAS Java server. The Java server is configured by specifying the network host and port via the ILIAS Setup and is required, among other things, for generating PDF files.
 certificate#:#certificate_var_max_points#:#Maximum number of points in the test used
 certificate#:#certificate_var_result_mark_long#:#Achieved mark presented in 'official form'
 certificate#:#certificate_var_result_mark_short#:#Achieved mark presented in 'short form'
