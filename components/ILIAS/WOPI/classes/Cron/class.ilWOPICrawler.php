@@ -26,12 +26,12 @@ use ILIAS\WOPI\Discovery\AppRepository;
 use ILIAS\WOPI\Discovery\ActionRepository;
 use ILIAS\Data\URI;
 use ILIAS\Cron\Job\JobResult;
-use ILIAS\Cron\CronJob;
+use ILIAS\Cron\Schedule\CronJobScheduleType;
 
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
-class ilWOPICrawler extends CronJob
+class ilWOPICrawler extends ilCronJob
 {
     private ilLanguage $language;
     private ilSetting $settings;
@@ -76,9 +76,9 @@ class ilWOPICrawler extends CronJob
         return true;
     }
 
-    public function getDefaultScheduleType(): JobScheduleType
+    public function getDefaultScheduleType(): CronJobScheduleType
     {
-        return JobScheduleType::WEEKLY;
+        return CronJobScheduleType::SCHEDULE_TYPE_WEEKLY;
     }
 
     public function getDefaultScheduleValue(): ?int
@@ -86,9 +86,9 @@ class ilWOPICrawler extends CronJob
         return 1;
     }
 
-    public function run(): JobResult
+    public function run(): ilCronJobResult
     {
-        $result = new JobResult();
+        $result = new ilCronJobResult();
         if (!(bool) $this->settings->get('wopi_activated', '0')) {
             $result->setMessage($this->language->txt('wopi_crawler_cronjob_not_activated'));
             return $result;
@@ -96,14 +96,14 @@ class ilWOPICrawler extends CronJob
         $discovery_url = $this->settings->get('wopi_discovery_url');
 
         if (!$this->crawler->validate(new URI($discovery_url))) {
-            $result->setStatus(JobResult::STATUS_FAIL);
+            $result->setStatus(ilCronJobResult::STATUS_FAIL);
             $result->setMessage($this->language->txt('msg_error_wopi_invalid_discorvery_url'));
             return $result;
         }
 
         $apps = $this->crawler->crawl(new URI($discovery_url));
         if ($apps === null) {
-            $result->setStatus(JobResult::STATUS_FAIL);
+            $result->setStatus(ilCronJobResult::STATUS_FAIL);
             $result->setMessage($this->language->txt('wopi_crawler_cronjob_no_apps'));
             return $result;
         }
