@@ -23,15 +23,16 @@ namespace ILIAS\FileDelivery\Token\Signer\Algorithm;
 /**
  * @author Fabian Schmid <fabian@sr.solutions>
  */
-class SHA256 implements Algorithm
+class ShortenedSHA1 implements Algorithm
 {
     public function getName(): string
     {
-        return 'sha256';
+        return 'sha1';
     }
 
     public function after(string $signature): string
     {
-        return $signature;
+        return substr($signature, 0, 8);
     }
+
 }
