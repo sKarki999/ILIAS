@@ -271,7 +271,7 @@ class SettingsQuestionBehaviour extends TestSettings
         array $environment
     ): SwitchableGroup {
         $constraint = $refinery->custom()->constraint(
-            static fn(?array $vs): bool => $vs === null || array_filter($vs[1]) !== [],
+            static fn(?array $vs): bool => $vs === null || $vs[0] === 'none' || array_filter($vs[1]) !== [],
             $lng->txt('select_at_least_one_lock_answer_type')
         );
 
@@ -290,12 +290,12 @@ class SettingsQuestionBehaviour extends TestSettings
             ],
             $lng->txt('tst_answer_fixation'),
             $lng->txt('tst_answer_fixation_on_instantfb_or_followupqst_desc')
-        )->withRequired(true);
+        );
 
         return $f->switchableGroup(
             [self::ANSWER_FIXATION_NONE => $group1, self::ANSWER_FIXATION_ON_IFB_OR_FUQST => $group2],
             $lng->txt('tst_answer_fixation_handling')
-        )
+        )->withRequired(!$environment['participant_data_exists'])
         ->withAdditionalTransformation($constraint)
         ->withAdditionalTransformation($this->getTransformationLockAnswers($refinery))
         ->withValue($this->getAnswerFixationSettingsAsFormValue())
