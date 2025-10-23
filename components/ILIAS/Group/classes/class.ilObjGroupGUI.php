@@ -921,8 +921,7 @@ class ilObjGroupGUI extends ilContainerGUI
             is_array($ids));
         if ($do_prtf) {
             $all_prtf = ilObjPortfolio::getAvailablePortfolioLinksForUserIds(
-                $ids,
-                $this->ctrl->getLinkTarget($this, "members")
+                $ids
             );
         }
 
