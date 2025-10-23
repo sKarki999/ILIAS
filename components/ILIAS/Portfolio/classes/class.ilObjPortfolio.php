@@ -105,15 +105,6 @@ class ilObjPortfolio extends ilObjPortfolioBase implements ilAdvancedMetaDataSub
 
         $access_handler = new ilPortfolioAccessHandler();
 
-<<<<<<< HEAD:components/ILIAS/Portfolio/classes/class.ilObjPortfolio.php
-        $params = null;
-        if ($a_back_url) {
-            //$params = array("back_url" => rawurlencode($a_back_url));
-        }
-        $params = [];
-
-=======
->>>>>>> 769c0f1a304 (Portfolio: Remove `back_url` usages (#10261)):Modules/Portfolio/classes/class.ilObjPortfolio.php
         foreach ($access_handler->getShardObjectsDataForUserIds($a_owner_ids) as $owner_id => $items) {
             foreach ($items as $id => $title) {
                 $url = ilLink::_getLink($id, 'prtf');
