@@ -673,7 +673,8 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
                 $this->addHeaderAction();
                 $test_process_locker_factory = (new ilTestProcessLockerFactory(
                     new ilSetting('assessment'),
-                    $this->db
+                    $this->db,
+                    $this->getTestObject()->getTestLogger()
                 ))->withContextId($this->getTestObject()->getId());
                 $gui = new ilTestRandomQuestionSetConfigGUI(
                     $this->getTestObject(),
