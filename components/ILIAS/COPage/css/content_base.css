@@ -14,11 +14,16 @@
 	text-align: left;
 }
 
+<<<<<<< HEAD:components/ILIAS/COPage/css/content_base.css
 .ilTinyMenuSection .dropdown-menu {
 	width: auto;
 }
 
 #iltinymenu div.ilTinyMenuSection p, #iltinymenu .il-copg-button-group p {
+=======
+/* see #41844 and #46127 */
+#copg-editor-slate-content p, #iltinymenu .il-copg-button-group p {
+>>>>>>> c57d52986b3 (46127: Background color not respected in paragraph format dropdown):Services/COPage/css/content_base.css
 	background-color: transparent;
 }
 
