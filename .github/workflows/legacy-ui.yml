@@ -41,8 +41,10 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: '24.x'
-          package-manager-cache: true
+          node-version: 24
+
+      - name: "Install npm version 11"
+        run: sudo npm install -g npm@11
 
       - name: Install Node dependencies
         run: npm clean-install --omit-dev --ignore-scripts
