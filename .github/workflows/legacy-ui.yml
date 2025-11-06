@@ -39,6 +39,11 @@ jobs:
           tools: composer:v2
           coverage: none
 
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          package-manager-cache: true
+
       - name: Install Node dependencies
         run: npm clean-install --omit-dev --ignore-scripts
 
