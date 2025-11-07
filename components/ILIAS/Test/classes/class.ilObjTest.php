@@ -682,8 +682,9 @@ class ilObjTest extends ilObject
     public function getIntroduction(): string
     {
         $page_id = $this->getMainSettings()->getIntroductionSettings()->getIntroductionPageId();
-        if ($page_id !== null) {
-            return (new ilTestPageGUI('tst', $page_id))->showPage();
+        if ($page_id !== null
+            && ($content = $this->getPageContentFromPageId($page_id)) !== null) {
+            return $content;
         }
 
         return ilRTE::_replaceMediaObjectImageSrc(
@@ -704,8 +705,9 @@ class ilObjTest extends ilObject
     public function getFinalStatement(): string
     {
         $page_id = $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksPageId();
-        if ($page_id !== null) {
-            return (new ilTestPageGUI('tst', $page_id))->showPage();
+        if ($page_id !== null
+            && ($content = $this->getPageContentFromPageId($page_id)) !== null) {
+            return $content;
         }
         return ilRTE::_replaceMediaObjectImageSrc(
             $this->getMainSettings()->getFinishingSettings()->getConcludingRemarksText(),
@@ -729,6 +731,16 @@ class ilObjTest extends ilObject
         $new_page_id = $page_object->createPageWithNextId();
         (new ilTestPage($source_page_id))->copy($new_page_id);
         return $new_page_id;
+    }
+
+    private function getPageContentFromPageId(int $page_id): ?string
+    {
+        $page = (new ilTestPageGUI('tst', $page_id));
+        if ($page->getPageObject()->getXMLContent() === '<PageObject></PageObject>') {
+            return null;
+        }
+
+        return $page->showPage();
     }
 
     /**
