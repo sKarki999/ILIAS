@@ -388,9 +388,9 @@ class TestScoringByQuestionGUI extends TestScoringByParticipantGUI
         if ($this->object->getAnonymity() === true) {
             return $this->lng->txt('answers_of') . ' ' . $this->lng->txt('anonymous');
         }
-        return $this->lng->txt('answers_of') . ' ' . $this->object->getCompleteEvaluationData()
-            ->getParticipant($active_id)
-            ->getName();
+
+        $participant = $this->object->getCompleteEvaluationData()->getParticipant($active_id);
+        return "{$this->lng->txt('answers_of')} {$participant->getName()} ({$participant->getLogin()})";
     }
 
     private function buildForm(
