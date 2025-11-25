@@ -12049,7 +12049,7 @@ meta#:#md_oai_identifier_prefix#:#OAI Präfix
 meta#:#md_oai_identifier_prefix_info#:#Dieser Präfix wird als Namespace in den Bezeichnern von abgefragten OER-Datensätzen benutzt.
 meta#:#md_oai_pmh_enabled#:#Abfragen über OAI-PMH Schnittstelle erlauben
 meta#:#md_oai_pmh_enabled_info#:#Wenn aktiviert, können vom OER-Harvester gefundene Resourcen von externen Parteien wie OER Repositorien abgefragt werden.
-meta#:#md_oai_repository_name#:#Name des Repositoriums
+meta#:#md_oai_repository_name#:#Name der Installation
 meta#:#md_oai_repository_name_info#:#Bei Anfragen über die Schnittstelle wird dies als Name dieser ILIAS-Installation angegeben.
 meta#:#md_obj_types#:#Zugeordnete Objekte
 meta#:#md_record_export_table#:#Exportdateien
